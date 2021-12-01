@@ -19,7 +19,7 @@ const postSchema = new Schema({
     },
     date: {
         type: Date,
-        required: true,
+        required: false,
     },
     reactions: {
         likes: {
