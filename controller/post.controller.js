@@ -4,7 +4,6 @@ const Post = require("../models/post.model");
 const getAllPosts = async (req, res) =>{
     const allPosts = await Post.find({});
     res.json(allPosts)
-    console.log(allPosts)
 }
 
 const addPost = async (req, res) =>{
