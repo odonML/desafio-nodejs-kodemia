@@ -33,7 +33,7 @@ const postSchema = new Schema({
         }
     }
 })
-postSchema.method('toJSON', function(){
+postSchema.method('toJSON', function(){ //cambiar el _id a id
     const {__v, _id, ...object} = this.toObject();
     object.id = _id;
     return object;
