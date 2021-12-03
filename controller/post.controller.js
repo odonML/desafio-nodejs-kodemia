@@ -30,10 +30,17 @@ const addPost = async (req, res) =>{
         })
     }
 }
+const getById = async (req, res) =>{
+    const id = req.params.id;
+    try{
+        const postById = await Post.findById(id)
 
-// const getById = async (req, res) =>{
-//     const id = req.params.id;
-// }
+        res.json(postById)
+    }catch (error) {
+        console.error(error)
+        res.end()
+    }
+ }
 // const editPost = async (req, res) =>{
 
 // } 
@@ -44,7 +51,7 @@ const addPost = async (req, res) =>{
 module.exports = {
     getAllPosts,
     addPost,
-    // getById, 
+    getById, 
     // editPost, 
     // deletePost,
 }

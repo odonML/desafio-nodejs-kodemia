@@ -33,6 +33,11 @@ const postSchema = new Schema({
         }
     }
 })
+postSchema.method('toJSON',function(){
+    const {__v, _id, ...object} = this.toObject();
+    object.id = _id;
+    return object;
+})
 
 const Posts = model("Post", postSchema);
 
