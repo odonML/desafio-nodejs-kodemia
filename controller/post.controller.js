@@ -44,11 +44,7 @@ const addPost = async (req, res) =>{
     try{
         const {title, content, img, tags, reactions} = req.body;
         if({title, content, img}!=null){
-            post.title=title;
-            post.content=content;
-            post.img=img;
-            post.tags=tags;
-            post.reactions=reactions;
+            post = {title, content, img, tags, reactions};
                 
             await post.save();
                 res.json(post)
