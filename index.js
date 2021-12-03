@@ -15,7 +15,8 @@ app.use(express.json());
 dbConection();
 
 //rutas
-app.use('/post', postDevTo);
+app.use('/posts', postDevTo);
+
 
 const PORT = process.env.PORT;
 app.listen(PORT, ()=>{

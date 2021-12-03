@@ -1,5 +1,6 @@
 const Post = require("../models/post.model");
 
+
 const getAllPosts = async (req, res) =>{
     const allPosts = await Post.find({});
     res.json(allPosts)
@@ -34,9 +35,34 @@ const addPost = async (req, res) =>{
 // const getById = async (req, res) =>{
 //     const id = req.params.id;
 // }
-// const editPost = async (req, res) =>{
 
-// } 
+ const editPost = async (req, res) =>{
+    const koderId = req.params.id;
+    let post = await Post.findOne({id: koderId});
+    
+    try{
+        const {title, content, img} = req.body;
+        if({title, content, img}!=null){
+            post.title=title;
+            post.content=content;
+            post.img=img;
+                
+            await post.save();
+                res.json(post)
+            return res.status(200);
+        }
+ //Aurora Comment *No borrar hasta el final*
+// mongodb+srv://aurora:kodemia123@cluster0.ibakh.mongodb.net/NodeJsChallenge
+// const Posts = model("posts", postSchema);           
+
+    }catch(error){
+        console.log(error);
+        res.status(500).json({
+            ok: false,
+            msj: "Requiered data missing."
+        })
+    }
+ } 
 // const deletePost = async (req, res) =>{
 
 // }
@@ -45,6 +71,6 @@ module.exports = {
     getAllPosts,
     addPost,
     // getById, 
-    // editPost, 
+    editPost, 
     // deletePost,
 }
