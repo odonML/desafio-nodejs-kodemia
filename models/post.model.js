@@ -19,7 +19,7 @@ const postSchema = new Schema({
     },
     date: {
         type: Date,
-        required: true,
+        required: false,
     },
     reactions: {
         likes: {
@@ -32,6 +32,11 @@ const postSchema = new Schema({
             type: Number
         }
     }
+})
+postSchema.method('Post', function(){
+    const {__v, _id, ...object} = this.toObject();
+    object.id = _id;
+    return object;
 })
 
 const Posts = model("Post", postSchema);
