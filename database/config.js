@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
-require("dotenv").config();
+const mongoose = require("mongoose"); //Importacion de mongoose
+require("dotenv").config(); //VARIABLES DE ENTORNO
 
-const URL = process.env.URL;
+const URL = process.env.URL; //ACEDE a la url
 
 const dbConection = async()=>{
     try{
